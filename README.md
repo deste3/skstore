@@ -465,8 +465,13 @@ kubectl apply -f kubernetes/deployment.yaml
 　 
 # Config Map
 
+- deployment.yml 수정 
 ![CONF1](https://user-images.githubusercontent.com/78134032/110057096-4c68a600-7da3-11eb-84d1-340a544fc61f.jpg)
+
+- application.yml 수정 
 ![CONF1-2](https://user-images.githubusercontent.com/78134032/110057098-4d013c80-7da3-11eb-8f48-19bf86a8f278.jpg)
+
+- 생성 및 조회
 ![CONF2](https://user-images.githubusercontent.com/78134032/110057100-4d99d300-7da3-11eb-9481-2de37c196c26.jpg)
 ![CONF3](https://user-images.githubusercontent.com/78134032/110057106-5094c380-7da3-11eb-96b5-bf446b46e21c.jpg)
 
