@@ -65,7 +65,7 @@
 　  
 　  
 ### 기능적 요구사항 검증(2)   
-![kinung2](https://user-images.githubusercontent.com/78134032/110056722-a9b02780-7da2-11eb-82a5-aaad581faa97.jpg)
+![kinung2](https://user-images.githubusercontent.com/78134032/110058288-6f945500-7da5-11eb-8314-68f33f7e1c3f.jpg)
 
     - 사용자가 주문을 취소할 수 있다.(OK)
     - 주문을 취소하면 주문금액을 환불한다.(OK)
@@ -141,13 +141,13 @@ http http://52.231.70.170:8080/orders productId=10 qty=5
 
 ```
 # order 서비스의 주문상태 확인
-http http://52.231.70.170:8080/orders/1
+http http://52.231.70.170:8080/orders/2
 ```
 ![api2](https://user-images.githubusercontent.com/78134032/110056740-b03e9f00-7da2-11eb-875a-78f0aab07f0f.jpg)
 
 ```
 # product 서비스의 주문현황 확인
-http http://52.231.70.170:8080/products/1
+http http://52.231.70.170:8080/products/2
 
 ```
 ![api3](https://user-images.githubusercontent.com/78134032/110056745-b16fcc00-7da2-11eb-8372-0f58afe7532d.jpg)
@@ -189,7 +189,7 @@ Order, Deposit, MyInfo는 H2로 구현하고 Item 서비스의 경우 Hsql로 �
     
 - 주문금액 결제서비스를 호출하기 위하여 Stub과 (FeignClient) 를 이용하여 Service 대행 인터페이스 (Proxy) 를 구현  (Depositservice.java)
 
-![image](https://user-images.githubusercontent.com/47556407/108034489-f1cc0c00-7078-11eb-8961-cb650db2b9fa.png)
+![REQRESP1](https://user-images.githubusercontent.com/78134032/110058314-791dbd00-7da5-11eb-88c8-a790a81810a1.jpg)
 
     
 　  
@@ -197,7 +197,7 @@ Order, Deposit, MyInfo는 H2로 구현하고 Item 서비스의 경우 Hsql로 �
 
 - 주문을 받은 직후(@PostPersist) 주문금액 결제를 요청하도록 처리
 
-![image](https://user-images.githubusercontent.com/47556407/108034722-453e5a00-7079-11eb-93f0-ed180ae81dba.png)
+![REQRESP2](https://user-images.githubusercontent.com/78134032/110058315-7a4eea00-7da5-11eb-8110-a338221e44db.jpg)
     
 　  
 　  
@@ -206,23 +206,20 @@ Order, Deposit, MyInfo는 H2로 구현하고 Item 서비스의 경우 Hsql로 �
 ```
 # 결제 (deposit) 서비스를 잠시 내려놓음
 # 예약 처리
-kubectl delete deploy deposit -n skuser03
+kubectl delete deploy deposit
 ```
-![image](https://user-images.githubusercontent.com/47556407/108035947-f09bde80-707a-11eb-82d3-7972e611fafc.png)
-
+![dongkierror1jpg](https://user-images.githubusercontent.com/78134032/110056760-b92f7080-7da2-11eb-96dc-e3ad77d68983.jpg)
 - 동기식 호출에서는 호출 시간에 따른 타임 커플링이 발생하며, 예치금 결제 시스템이 장애가 나면 예약도 못받는다는 것을 확인
 
-![image](https://user-images.githubusercontent.com/47556407/108036023-090bf900-707b-11eb-9c11-16fa02888f4b.png)
-    
-　  
-　  
+![dongkierror2jpg](https://user-images.githubusercontent.com/78134032/110056687-a026bf80-7da2-11eb-85f1-273b3a8c8c9b.jpg)
+
 ```
 # 결재(deposit)서비스 재기동
-kubectl create deploy deposit --image=skuser03.azurecr.io/deposit:latest -n skuser03
+kubectl create deploy deposit --image=skuser07.azurecr.io/deposit:v7
 ```
-![image](https://user-images.githubusercontent.com/47556407/108036520-abc47780-707b-11eb-8d30-1b7667a05a4d.png)
-
-![image](https://user-images.githubusercontent.com/47556407/108036597-c860af80-707b-11eb-8b36-d34ed75c379f.png)
+![dongkierror3jpg](https://user-images.githubusercontent.com/78134032/110056693-a1f08300-7da2-11eb-9144-54cf81a5594f.jpg)
+![dongkierror4jpg](https://user-images.githubusercontent.com/78134032/110056705-a5840a00-7da2-11eb-915d-430cb5e4bca0.jpg)
+![dongkierror5jpg](https://user-images.githubusercontent.com/78134032/110056710-a61ca080-7da2-11eb-82d9-ffe31d697012.jpg)
 
     
 　  
@@ -234,20 +231,21 @@ kubectl create deploy deposit --image=skuser03.azurecr.io/deposit:latest -n skus
 # Gateway
 - gateway > application.yml
 
-![image](https://user-images.githubusercontent.com/47556407/108038063-c0097400-707d-11eb-9944-8b734b2f7dcf.png)
+![gate1](https://user-images.githubusercontent.com/78134032/110056712-a6b53700-7da2-11eb-8d16-7ed823087c82.jpg)
     
 　  
 　  
 
 - Gateway의 External-IP 확인
 
-![image](https://user-images.githubusercontent.com/47556407/108039061-f4c9fb00-707e-11eb-8409-c7bd37228b03.png)
+![gate2](https://user-images.githubusercontent.com/78134032/110056714-a74dcd80-7da2-11eb-8df0-e8f28a926a4f.jpg)
+
     
 　  
 　  
 - External-IP 로 order서비스에 접근
 
-![image](https://user-images.githubusercontent.com/47556407/108038613-6786a680-707e-11eb-8dd1-92c3e04807bc.png)
+![gate3](https://user-images.githubusercontent.com/78134032/110056717-a7e66400-7da2-11eb-99df-30bdd1cc3399.jpg)
 
     
 　  
@@ -288,7 +286,7 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 　  
 - Deploy 확인
 
-![image](https://user-images.githubusercontent.com/47556407/108038482-3908cb80-707e-11eb-83fe-20dcc7094fc6.png)
+![deploy1](https://user-images.githubusercontent.com/78134032/110056756-b6348000-7da2-11eb-894b-eb120f7ff548.jpg)
     
 　  
 　  
@@ -320,17 +318,18 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 
 - 피호출 서비스(주문금액 결제:deposit) 의 임의 부하 처리  order.java(entity)
 
-![image](https://user-images.githubusercontent.com/47556407/108139181-da396580-7102-11eb-8588-fae0598381f7.png)
-
-    
-　  
+![CIRB1](https://user-images.githubusercontent.com/78134032/110056949-0a3f6480-7da3-11eb-9ede-950e16c53797.jpg)
+  
 　  
 
 `$ siege -c255 -t60S -r10 -v --content-type "application/json" 'http://52.231.70.170:8080/orders POST {"productId": "10", "qty":"5"}'`
 
 - 부하테스터 siege 툴을 통한 서킷 브레이커 동작 확인 (동시사용자 255명, 60초 진행)
 
-![image](https://user-images.githubusercontent.com/47556407/108157604-7cb71000-7126-11eb-8b16-da6f29c89cb8.png)
+![CIRB2](https://user-images.githubusercontent.com/78134032/110056952-0b709180-7da3-11eb-8b77-e18c6e675527.jpg)
+![CIRB3](https://user-images.githubusercontent.com/78134032/110056953-0c092800-7da3-11eb-8c2c-6a1113fb4ccb.jpg)
+![CIRB4](https://user-images.githubusercontent.com/78134032/110056956-0ca1be80-7da3-11eb-963d-165b0ebbf9a1.jpg)
+
 
 
 ```
@@ -341,7 +340,9 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
     
 　  
 　  
-![image](https://user-images.githubusercontent.com/47556407/108157652-9c4e3880-7126-11eb-97a2-5f5ab36c3327.png)
+![CIRB5](https://user-images.githubusercontent.com/78134032/110056957-0d3a5500-7da3-11eb-8f0f-9cf8fad15135.jpg)
+![CIRB6](https://user-images.githubusercontent.com/78134032/110056960-0dd2eb80-7da3-11eb-88dc-af743ff1ef78.jpg)
+    
 
 
 `운영시스템은 죽지 않고 지속적으로 CB 에 의하여 적절히 회로가 열림과 닫힘이 벌어지면서 자원을 보호하고 있음을 보여줌`
@@ -368,7 +369,7 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 
 ### autoscale out 설정 
 
-- kubectl autoscale deploy order --min=1 --max=10 --cpu-percent=15 -n skuser03
+- kubectl autoscale deploy order --min=1 --max=10 --cpu-percent=15
 
 ![image](https://user-images.githubusercontent.com/47556407/108158989-6eb6be80-7129-11eb-88c8-b79b2bb9891f.png)
     
@@ -390,11 +391,9 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 　  
 - 어느정도 시간이 흐른 후 (약 30초) 스케일 아웃이 벌어지는 것을 확인할 수 있다:
 
-![image](https://user-images.githubusercontent.com/47556407/108164875-f81fbe00-7134-11eb-87b5-7ca950d77ab4.png)
-    
-　  
-　  
-    
+![autosca](https://user-images.githubusercontent.com/78134032/110056868-e714b500-7da2-11eb-9934-df1142147cce.jpg)
+![autosca2](https://user-images.githubusercontent.com/78134032/110056872-e845e200-7da2-11eb-814f-a04098d41c30.jpg)
+![autoscal_pod_inc](https://user-images.githubusercontent.com/78134032/110056748-b2086280-7da2-11eb-8dac-3731698dc39a.jpg)
 　  
 　  
    
@@ -436,17 +435,15 @@ kubectl set image deploy order order=skuser07.azurecr.io/order:v7
 kubectl apply -f kubernetes/deployment.yaml
 # 이미지 변경 배포 한 후 Availability 확인:
 ```
-![image](https://user-images.githubusercontent.com/47556407/108172582-5900c380-7140-11eb-90ff-1061ad2f1e36.png)
-    
-　  
+![READ1](https://user-images.githubusercontent.com/78134032/110057027-293df680-7da3-11eb-82f8-5433e94845a4.jpg)
+
 　  
 - 배포기간 동안 Availability 가 변화없기 때문에 무정지 재배포가 성공한 것으로 확인됨.
 
-![image](https://user-images.githubusercontent.com/47556407/108172642-68800c80-7140-11eb-8830-0fbc2210c473.png)
-    
-　  
-　      
-    
+![READ2](https://user-images.githubusercontent.com/78134032/110057028-2a6f2380-7da3-11eb-9184-3f09cc7bb5e5.jpg)
+![READ3](https://user-images.githubusercontent.com/78134032/110057029-2a6f2380-7da3-11eb-9bf0-9d299fc73865.jpg)
+![READ4](https://user-images.githubusercontent.com/78134032/110057031-2b07ba00-7da3-11eb-800c-4d627c18ddf0.jpg)
+![READ5](https://user-images.githubusercontent.com/78134032/110057036-2c38e700-7da3-11eb-871f-ebaa2e2aa612.jpg)
 　  
 　  
    　  
@@ -461,8 +458,8 @@ kubectl apply -f kubernetes/deployment.yaml
 　  
 - order pod에 liveness가 적용된 부분 확인
 
-![image](https://user-images.githubusercontent.com/47556407/108173813-f5779580-7141-11eb-90d7-906091ed9027.png)
-
+![LIVE1](https://user-images.githubusercontent.com/78134032/110057060-38bd3f80-7da3-11eb-8fc8-33f15e6f0ec9.jpg)
+![LIVE2](https://user-images.githubusercontent.com/78134032/110057063-39ee6c80-7da3-11eb-8689-15fc12ac777d.jpg)
     
 　  
 　  
