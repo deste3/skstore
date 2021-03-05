@@ -466,6 +466,10 @@ kubectl apply -f kubernetes/deployment.yaml
 
 ![LIVE2](https://user-images.githubusercontent.com/78134032/110057063-39ee6c80-7da3-11eb-8689-15fc12ac777d.jpg)
     
+    
+- Restart Count 증가 부분 확인
+![restart](https://user-images.githubusercontent.com/78134032/110070828-28ff2480-7dbe-11eb-8971-21d54b6aefb0.PNG)
+    
 　 
 # Config Map
 
