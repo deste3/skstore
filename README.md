@@ -50,6 +50,7 @@
 
 ### Event Storming 결과
 ![eventStorming](https://user-images.githubusercontent.com/47556407/108024072-3b136000-7067-11eb-8b42-170fc064c507.png)
+![model](https://user-images.githubusercontent.com/78134032/110052437-f3950f80-7d9a-11eb-9050-f4f227360621.jpg)
 　  
 　     
 ### 기능적 요구사항 검증(1)
