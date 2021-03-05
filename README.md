@@ -215,7 +215,7 @@ kubectl delete deploy deposit
 
 ```
 # 결재(deposit)서비스 재기동
-kubectl create deploy deposit --image=skuser07.azurecr.io/deposit:v7
+kubectl create deploy deposit --image=skuser07.azurecr.io/deposit:v10
 ```
 ![dongkierror3jpg](https://user-images.githubusercontent.com/78134032/110056693-a1f08300-7da2-11eb-9144-54cf81a5594f.jpg)
 ![dongkierror4jpg](https://user-images.githubusercontent.com/78134032/110056705-a5840a00-7da2-11eb-915d-430cb5e4bca0.jpg)
@@ -311,7 +311,7 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 
 - application.yml 설정
 
-![image](https://user-images.githubusercontent.com/47556407/108139128-c130b480-7102-11eb-919b-a64042c30132.png)
+![CIRB2](https://user-images.githubusercontent.com/78134032/110056952-0b709180-7da3-11eb-8b77-e18c6e675527.jpg)
 
     
 　  
@@ -324,9 +324,11 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 
 `$ siege -c255 -t60S -r10 -v --content-type "application/json" 'http://52.231.70.170:8080/orders POST {"productId": "10", "qty":"5"}'`
 
+![CIRB5](https://user-images.githubusercontent.com/78134032/110056957-0d3a5500-7da3-11eb-8f0f-9cf8fad15135.jpg)
+
 - 부하테스터 siege 툴을 통한 서킷 브레이커 동작 확인 (동시사용자 255명, 60초 진행)
 
-![CIRB2](https://user-images.githubusercontent.com/78134032/110056952-0b709180-7da3-11eb-8b77-e18c6e675527.jpg)
+
 ![CIRB3](https://user-images.githubusercontent.com/78134032/110056953-0c092800-7da3-11eb-8c2c-6a1113fb4ccb.jpg)
 ![CIRB4](https://user-images.githubusercontent.com/78134032/110056956-0ca1be80-7da3-11eb-963d-165b0ebbf9a1.jpg)
 
@@ -340,7 +342,7 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
     
 　  
 　  
-![CIRB5](https://user-images.githubusercontent.com/78134032/110056957-0d3a5500-7da3-11eb-8f0f-9cf8fad15135.jpg)
+
 ![CIRB6](https://user-images.githubusercontent.com/78134032/110056960-0dd2eb80-7da3-11eb-88dc-af743ff1ef78.jpg)
     
 
@@ -362,7 +364,7 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 
 - 테스트를 위한 리소스 할당(order > deployment.yml)
 
-![image](https://user-images.githubusercontent.com/47556407/108158884-3ca55c80-7129-11eb-9b85-054afaac7e3d.png)
+![autosca](https://user-images.githubusercontent.com/78134032/110056868-e714b500-7da2-11eb-9934-df1142147cce.jpg)
     
 　  
 　  
@@ -391,7 +393,7 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 　  
 - 어느정도 시간이 흐른 후 (약 30초) 스케일 아웃이 벌어지는 것을 확인할 수 있다:
 
-![autosca](https://user-images.githubusercontent.com/78134032/110056868-e714b500-7da2-11eb-9934-df1142147cce.jpg)
+
 ![autosca2](https://user-images.githubusercontent.com/78134032/110056872-e845e200-7da2-11eb-814f-a04098d41c30.jpg)
 ![autoscal_pod_inc](https://user-images.githubusercontent.com/78134032/110056748-b2086280-7da2-11eb-8dac-3731698dc39a.jpg)
 　  
@@ -426,7 +428,7 @@ kubectl set image deploy order order=skuser07.azurecr.io/order:v7
 
 - deployment.yaml 의 readiness probe 의 설정
 
-![image](https://user-images.githubusercontent.com/47556407/108172274-f90a1d00-713f-11eb-903d-c29c1e109f69.png)
+![READ3](https://user-images.githubusercontent.com/78134032/110057029-2a6f2380-7da3-11eb-9bf0-9d299fc73865.jpg)
     
 　  
 　  
@@ -441,7 +443,6 @@ kubectl apply -f kubernetes/deployment.yaml
 - 배포기간 동안 Availability 가 변화없기 때문에 무정지 재배포가 성공한 것으로 확인됨.
 
 ![READ2](https://user-images.githubusercontent.com/78134032/110057028-2a6f2380-7da3-11eb-9184-3f09cc7bb5e5.jpg)
-![READ3](https://user-images.githubusercontent.com/78134032/110057029-2a6f2380-7da3-11eb-9bf0-9d299fc73865.jpg)
 ![READ4](https://user-images.githubusercontent.com/78134032/110057031-2b07ba00-7da3-11eb-800c-4d627c18ddf0.jpg)
 ![READ5](https://user-images.githubusercontent.com/78134032/110057036-2c38e700-7da3-11eb-871f-ebaa2e2aa612.jpg)
 　  
@@ -452,20 +453,15 @@ kubectl apply -f kubernetes/deployment.yaml
 
 - deployment.yml 에 Liveness Probe 옵션 추가
 
-![image](https://user-images.githubusercontent.com/47556407/108172764-8f3e4300-7140-11eb-8f83-e87f4a2d6b3f.png)
+![LIVE1](https://user-images.githubusercontent.com/78134032/110057060-38bd3f80-7da3-11eb-8fc8-33f15e6f0ec9.jpg)
     
 　  
 　  
 - order pod에 liveness가 적용된 부분 확인
 
-![LIVE1](https://user-images.githubusercontent.com/78134032/110057060-38bd3f80-7da3-11eb-8fc8-33f15e6f0ec9.jpg)
+
 ![LIVE2](https://user-images.githubusercontent.com/78134032/110057063-39ee6c80-7da3-11eb-8689-15fc12ac777d.jpg)
     
-　  
-　  
-- order 서비스의 liveness가 발동되어 7번 retry 시도 한 부분 확인
-
-![image](https://user-images.githubusercontent.com/47556407/108174264-8f3f4280-7142-11eb-9941-170e07025c05.png)
-
+　 
 
 
