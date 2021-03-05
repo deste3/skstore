@@ -91,8 +91,12 @@
     - 사용자가 주문상황을 조회할 수 있도록 별도의 view로 구성한다.(CQRS)  
     
 　  
-　  
+
+# 헥사고날 아키텍쳐
+
+![hexa](https://user-images.githubusercontent.com/78134032/110066654-4f6c9200-7db5-11eb-9e18-e483d927f0f4.jpg)
        
+
 
 # 구현
 
