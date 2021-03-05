@@ -119,7 +119,6 @@ mvn spring-boot:run
 
 - 각 서비스내에 도출된 핵심 Aggregate Root 객체를 Entity 로 선언하였다: (예시는 order 마이크로 서비스)
 
-![20210215_120254](https://user-images.githubusercontent.com/47556407/108024373-c8ef4b00-7067-11eb-90cd-073e201b2adb.png)
 ![ddd1](https://user-images.githubusercontent.com/78134032/110056749-b3398f80-7da2-11eb-8057-3dd9fa930b23.jpg)
 ![ddd1-1](https://user-images.githubusercontent.com/78134032/110056753-b3d22600-7da2-11eb-9186-01bd791dfbba.jpg)
     
@@ -128,7 +127,6 @@ mvn spring-boot:run
    
 - Entity Pattern 과 Repository Pattern 을 적용하여 JPA 를 통하여 다양한 데이터소스 유형 (RDB or NoSQL) 에 대한 별도의 처리가 없도록 데이터 접근 어댑터를 자동 생성하기 위하여 Spring Data REST 의 RestRepository 를 적용하였다
 
-![20210215_120624](https://user-images.githubusercontent.com/47556407/108024593-38fdd100-7068-11eb-8452-bfa6a2471708.png)
 ![ddd2](https://user-images.githubusercontent.com/78134032/110056755-b5035300-7da2-11eb-9c98-ebdbc6af2329.jpg)
 　  
 　  
