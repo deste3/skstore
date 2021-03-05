@@ -17,13 +17,13 @@
   
 `비기능적 요구사항`
 1. 트랜잭션
-    1. 결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다.(Sync)
-    1. 주문을 취소하면 Deposit을 환불하고 product에 주문취소 내역을 전달한다.(Async)
+    1. 결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다.(Sync 적용)
+    1. 주문을 취소하면 Deposit을 환불하고 product에 주문취소 내역을 전달한다.(Async 적용)
 1. 장애격리
     1. Deposit 시스템이 과중되면 예약을 받지 않고 잠시후에 하도록 유도한다(Circuit breaker, fallback)
-    1. product 서비스가 중단되더라도 예약은 받을 수 있다.(Asyncm, Event Dirven)
+    1. Item 서비스가 중단되더라도 예약은 받을 수 있다.(Async, Event Driven)
 1. 성능
-    1. 사용자가 주문상황을 조회할 수 있도록 별도의 view로 구성한다.(CQRS)  
+    1. 사용자가 주문상황을 조회할 수 있도록 별도의 View 로 구성한다.(CQRS)  
 
 
 　    
