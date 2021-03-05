@@ -54,7 +54,7 @@
 　     
 ### 기능적 요구사항 검증(1)
 
-![1](https://user-images.githubusercontent.com/47556407/108023276-8b89be00-7065-11eb-95bb-b13d35dfca3f.png)
+![kinung1](https://user-images.githubusercontent.com/78134032/110056720-a87efa80-7da2-11eb-9a9c-be21e52b7b15.jpg)
 
     - 사용자가 주문서비스에서 제품을 주문한다.(OK)
     - 사용자가 주문금액을 결제한다.(OK)
@@ -65,7 +65,7 @@
 　  
 　  
 ### 기능적 요구사항 검증(2)   
-![2](https://user-images.githubusercontent.com/47556407/108023413-cee42c80-7065-11eb-9ac2-f0f5e5c6e910.png)
+![kinung2](https://user-images.githubusercontent.com/78134032/110056722-a9b02780-7da2-11eb-82a5-aaad581faa97.jpg)
 
     - 사용자가 주문을 취소할 수 있다.(OK)
     - 주문을 취소하면 주문금액을 환불한다.(OK)
@@ -75,7 +75,7 @@
 　  
 　  
 ### 기능적 요구사항 검증(3)   
-![3](https://user-images.githubusercontent.com/47556407/108023936-f5569780-7066-11eb-9f9f-83063e69b7ed.png)
+![kinung3](https://user-images.githubusercontent.com/78134032/110056726-aae15480-7da2-11eb-9f7c-8577896e9c5c.jpg)
 
     - 사용자가 모든 진행내역을 볼 수 있어야 한다.(OK)
     
@@ -120,6 +120,8 @@ mvn spring-boot:run
 - 각 서비스내에 도출된 핵심 Aggregate Root 객체를 Entity 로 선언하였다: (예시는 order 마이크로 서비스)
 
 ![20210215_120254](https://user-images.githubusercontent.com/47556407/108024373-c8ef4b00-7067-11eb-90cd-073e201b2adb.png)
+![ddd1](https://user-images.githubusercontent.com/78134032/110056749-b3398f80-7da2-11eb-8057-3dd9fa930b23.jpg)
+![ddd1-1](https://user-images.githubusercontent.com/78134032/110056753-b3d22600-7da2-11eb-9186-01bd791dfbba.jpg)
     
 　  
 　  
@@ -127,7 +129,7 @@ mvn spring-boot:run
 - Entity Pattern 과 Repository Pattern 을 적용하여 JPA 를 통하여 다양한 데이터소스 유형 (RDB or NoSQL) 에 대한 별도의 처리가 없도록 데이터 접근 어댑터를 자동 생성하기 위하여 Spring Data REST 의 RestRepository 를 적용하였다
 
 ![20210215_120624](https://user-images.githubusercontent.com/47556407/108024593-38fdd100-7068-11eb-8452-bfa6a2471708.png)
-    
+![ddd2](https://user-images.githubusercontent.com/78134032/110056755-b5035300-7da2-11eb-9c98-ebdbc6af2329.jpg)
 　  
 　  
    
@@ -135,23 +137,22 @@ mvn spring-boot:run
 
 ```
 # order 서비스의 예약처리
-http http://52.231.96.78:8080/orders productId=10 qty=5
+http http://52.231.70.170:8080/orders productId=10 qty=5
 ```
-![image](https://user-images.githubusercontent.com/47556407/108030441-972fb180-7072-11eb-85a8-b76ded12e852.png)
-
+![api1](https://user-images.githubusercontent.com/78134032/110056735-ae74db80-7da2-11eb-8b24-0a70f0aa79fd.jpg)
 
 ```
 # order 서비스의 주문상태 확인
-http localhost:8081/orders/1
+http http://52.231.70.170:8080/orders/1
 ```
-![image](https://user-images.githubusercontent.com/47556407/108030523-bcbcbb00-7072-11eb-8978-6fa1fd65bbd1.png)
+![api2](https://user-images.githubusercontent.com/78134032/110056740-b03e9f00-7da2-11eb-875a-78f0aab07f0f.jpg)
 
 ```
 # product 서비스의 주문현황 확인
-http localhost:8084/products/1
+http http://52.231.70.170:8080/products/1
 
 ```
-![image](https://user-images.githubusercontent.com/47556407/108032100-48374b80-7075-11eb-933a-49ab5edf49a5.png)
+![api3](https://user-images.githubusercontent.com/78134032/110056745-b16fcc00-7da2-11eb-8372-0f58afe7532d.jpg)
 　  
 　  
    
