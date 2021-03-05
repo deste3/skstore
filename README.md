@@ -373,7 +373,8 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 
 - kubectl autoscale deploy order --min=1 --max=10 --cpu-percent=15
 
-![image](https://user-images.githubusercontent.com/47556407/108158989-6eb6be80-7129-11eb-88c8-b79b2bb9891f.png)
+![auto11111](https://user-images.githubusercontent.com/78134032/110061133-5e017c00-7daa-11eb-92bd-54b1d14a0f91.jpg)
+
     
 　  
 　  
@@ -388,14 +389,15 @@ kubectl expose deploy gateway --type=LoadBalancer --port=8080
 
 `watch kubectl get all`
 
-    
+![autoscal_pod_inc](https://user-images.githubusercontent.com/78134032/110056748-b2086280-7da2-11eb-8dac-3731698dc39a.jpg)    
 　  
 　  
 - 어느정도 시간이 흐른 후 (약 30초) 스케일 아웃이 벌어지는 것을 확인할 수 있다:
 
 
+
 ![autosca2](https://user-images.githubusercontent.com/78134032/110056872-e845e200-7da2-11eb-814f-a04098d41c30.jpg)
-![autoscal_pod_inc](https://user-images.githubusercontent.com/78134032/110056748-b2086280-7da2-11eb-8dac-3731698dc39a.jpg)
+
 　  
 　  
    
@@ -419,7 +421,7 @@ kubectl set image deploy order order=skuser07.azurecr.io/order:v7
 　  
 ### readiness 옵션이 없는 경우 배포 중 서비스 요청처리 실패
 
-![image](https://user-images.githubusercontent.com/47556407/108172175-d7109a80-713f-11eb-9466-cceaec00d656.png)
+![READ2](https://user-images.githubusercontent.com/78134032/110057028-2a6f2380-7da3-11eb-9184-3f09cc7bb5e5.jpg)
     
 　  
 　  
@@ -442,7 +444,7 @@ kubectl apply -f kubernetes/deployment.yaml
 　  
 - 배포기간 동안 Availability 가 변화없기 때문에 무정지 재배포가 성공한 것으로 확인됨.
 
-![READ2](https://user-images.githubusercontent.com/78134032/110057028-2a6f2380-7da3-11eb-9184-3f09cc7bb5e5.jpg)
+
 ![READ4](https://user-images.githubusercontent.com/78134032/110057031-2b07ba00-7da3-11eb-800c-4d627c18ddf0.jpg)
 ![READ5](https://user-images.githubusercontent.com/78134032/110057036-2c38e700-7da3-11eb-871f-ebaa2e2aa612.jpg)
 　  
