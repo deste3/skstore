@@ -439,8 +439,6 @@ kubectl set image deploy order order=skuser07.azurecr.io/order:v7
 kubectl apply -f kubernetes/deployment.yaml
 # 이미지 변경 배포 한 후 Availability 확인:
 ```
-![READ1](https://user-images.githubusercontent.com/78134032/110057027-293df680-7da3-11eb-82f8-5433e94845a4.jpg)
-
 　  
 - 배포기간 동안 Availability 가 변화없기 때문에 무정지 재배포가 성공한 것으로 확인됨.
 
@@ -465,5 +463,10 @@ kubectl apply -f kubernetes/deployment.yaml
 ![LIVE2](https://user-images.githubusercontent.com/78134032/110057063-39ee6c80-7da3-11eb-8689-15fc12ac777d.jpg)
     
 　 
+# Config Map
 
+![CONF1](https://user-images.githubusercontent.com/78134032/110057096-4c68a600-7da3-11eb-84d1-340a544fc61f.jpg)
+![CONF1-2](https://user-images.githubusercontent.com/78134032/110057098-4d013c80-7da3-11eb-8f48-19bf86a8f278.jpg)
+![CONF2](https://user-images.githubusercontent.com/78134032/110057100-4d99d300-7da3-11eb-9481-2de37c196c26.jpg)
+![CONF3](https://user-images.githubusercontent.com/78134032/110057106-5094c380-7da3-11eb-96b5-bf446b46e21c.jpg)
 
